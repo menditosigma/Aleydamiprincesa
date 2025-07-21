@@ -1,87 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aleyda 💖</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      height: 100%;
-      background: black;
-      font-family: 'Courier New', Courier, monospace;
-    }
-
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 0;
-    }
-
-    .message {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #ff9ecf;
-      font-size: 4em;
-      opacity: 0.15;
-      text-shadow: 0 0 15px #ff5ea8;
-      z-index: 1;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Te Amo</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <canvas id="matrix"></canvas>
-
-  <div class="message">Aleyda 💖</div>
-
   <audio autoplay loop>
-    <source src="thoseeyes.mp3" type="audio/mpeg">
-    Tu navegador no soporta audio HTML5.
+    <source src="those-eyes.mp3" type="audio/mpeg">
+    Tu navegador no soporta el audio.
   </audio>
 
-  <script>
-    const canvas = document.getElementById("matrix");
-    const ctx = canvas.getContext("2d");
-
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
-
-    const fontSize = 26;
-    const columns = Math.floor(canvas.width / (fontSize * 3));
-    const drops = new Array(columns).fill(1);
-
-    function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = "TE AMO";
-        const x = i * fontSize * 3;
-        const y = drops[i] * fontSize;
-
-        // Gradiente romántico (rojo a púrpura)
-        const gradient = ctx.createLinearGradient(x, y, x + 100, y + 30);
-        gradient.addColorStop(0, "#ff4d6d"); // rosado
-        gradient.addColorStop(1, "#b84dff"); // púrpura
-
-        ctx.fillStyle = gradient;
-        ctx.font = fontSize + "px monospace";
-        ctx.fillText(text, x, y);
-
-        if (y > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-
-        drops[i]++;
-      }
-    }
-
-    setInterval(draw, 50);
-  </script>
+  <div class="container">
+    <!-- 100 "te amo" para que se vean bastantes -->
+    <!-- Si quieres más, puedes duplicar o generar con JS -->
+    <span>te amo</span><span>te amo</span><span>te amo</span><span>te amo</span>
+    <span>te amo</span><span>te amo</span><span>te amo</span><span>te amo</span>
+    <span>te amo</span><span>te amo</span><span>te amo</span><span>te amo</span>
+    <span>te amo</span><span>te amo</span><span>te amo</span><span>te amo</span>
+    <span>te amo</span><span>te amo</span><span>te amo</span><span>te amo</span>
+    <span>te amo</span><span>te amo</span><span>te amo</span><span>te amo</span>
+    <span>te amo</span><span>te amo</span><span>te amo</span><span>te amo</span>
+    <span>te amo</span><span>te amo</span><span>te amo</span><span>te amo</span>
+    <!-- ... puedes seguir copiando hasta tener los que quieras -->
+  </div>
 </body>
 </html>
