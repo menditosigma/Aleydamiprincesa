@@ -11,7 +11,6 @@
       overflow: hidden;
       height: 100%;
       background: black;
-      color: #f06292;
       font-family: 'Courier New', Courier, monospace;
     }
 
@@ -27,36 +26,21 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 20px;
-      padding: 30px 50px;
-      text-align: center;
+      color: #ff9ecf;
+      font-size: 4em;
+      opacity: 0.15;
+      text-shadow: 0 0 15px #ff5ea8;
       z-index: 1;
-      box-shadow: 0 0 25px rgba(255, 105, 135, 0.5);
-    }
-
-    .message h1 {
-      color: #e91e63;
-      font-size: 3em;
-      margin: 0;
-    }
-
-    .message p {
-      color: #333;
-      font-size: 1.2em;
     }
   </style>
 </head>
 <body>
   <canvas id="matrix"></canvas>
 
-  <div class="message">
-    <h1>Aleyda 💖</h1>
-    <p>Siempre que suene esta canción, recuerda cuánto te pienso 🥺</p>
-  </div>
+  <div class="message">Aleyda 💖</div>
 
   <audio autoplay loop>
-    <source src="thoseeyes.mp3" type="audio/mpeg" />
+    <source src="thoseeyes.mp3" type="audio/mpeg">
     Tu navegador no soporta audio HTML5.
   </audio>
 
@@ -67,23 +51,29 @@
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
 
-    const letters = Array(256).join(" ").split("");
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
-    const drops = new Array(Math.floor(columns)).fill(1);
+    const fontSize = 26;
+    const columns = Math.floor(canvas.width / (fontSize * 3));
+    const drops = new Array(columns).fill(1);
 
     function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = "#ff4d6d";
-      ctx.font = fontSize + "px monospace";
 
       for (let i = 0; i < drops.length; i++) {
         const text = "TE AMO";
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        const x = i * fontSize * 3;
+        const y = drops[i] * fontSize;
 
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+        // Gradiente romántico (rojo a púrpura)
+        const gradient = ctx.createLinearGradient(x, y, x + 100, y + 30);
+        gradient.addColorStop(0, "#ff4d6d"); // rosado
+        gradient.addColorStop(1, "#b84dff"); // púrpura
+
+        ctx.fillStyle = gradient;
+        ctx.font = fontSize + "px monospace";
+        ctx.fillText(text, x, y);
+
+        if (y > canvas.height && Math.random() > 0.975) {
           drops[i] = 0;
         }
 
