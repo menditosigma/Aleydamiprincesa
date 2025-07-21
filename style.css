@@ -1,47 +1,36 @@
-* {
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  background-color: black;
+  overflow: hidden;
 }
 
-body {
-  background: linear-gradient(135deg, #ffdee9, #b5fffc);
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
-  animation: fadeIn 2s ease-in;
+.container span {
+  position: absolute;
+  top: -50px;
+  color: #a020f0; /* morado fuerte */
+  font-size: 14px;
+  animation: fall linear infinite;
+  opacity: 0.8;
 }
 
-.container {
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
 }
 
-h1 {
-  font-size: 3rem;
-  color: #e91e63;
-  margin-bottom: 1rem;
-  animation: pulse 2s infinite;
-}
+/* Generamos 100 elementos con posiciones aleatorias */
+.container span:nth-child(1) { left: 1%; animation-duration: 4s; animation-delay: 0s; }
+.container span:nth-child(2) { left: 5%; animation-duration: 6s; animation-delay: 0.5s; }
+.container span:nth-child(3) { left: 10%; animation-duration: 5s; animation-delay: 1s; }
+.container span:nth-child(4) { left: 15%; animation-duration: 7s; animation-delay: 1.5s; }
+.container span:nth-child(5) { left: 20%; animation-duration: 6s; animation-delay: 2s; }
+.container span:nth-child(6) { left: 25%; animation-duration: 5s; animation-delay: 0.2s; }
+.container span:nth-child(7) { left: 30%; animation-duration: 4.5s; animation-delay: 0.8s; }
+.container span:nth-child(8) { left: 35%; animation-duration: 5.5s; animation-delay: 1.2s; }
+.container span:nth-child(9) { left: 40%; animation-duration: 6s; animation-delay: 1.7s; }
+.container span:nth-child(10) { left: 45%; animation-duration: 4s; animation-delay: 2.3s; }
+/* ... sigue agregando para todos los <span> que tengas */
 
-.sub {
-  font-size: 1.2rem;
-  color: #555;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
